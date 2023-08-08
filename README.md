@@ -21,5 +21,5 @@ python3 main.py
 
 ## 支持
 
-如果觉得本项目对您有帮助，欢迎使用下方邀请链接进行注册使用
+如果觉得本项目对您有帮助，欢迎使用下方邀请链接进行注册使用  
 [CapSolver注册链接](https://dashboard.capsolver.com/passport/register?inviteCode=lhn2_FmvyM-N)
