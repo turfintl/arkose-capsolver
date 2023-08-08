@@ -1,5 +1,5 @@
 # arkose-capsolver                                                                                                                            
-一个简单的利用CapSolver API获取arkose token的http服务器。
+一个简单的利用CapSolver API获取arkose token的http服务器。  
 注：CapSolver收费，$2 / 1000 token
 
 ## 安装
