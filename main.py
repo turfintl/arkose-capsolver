@@ -5,14 +5,25 @@ import capsolver
 
 # 填入CapSolver API key // Enter your CapSolver API key here
 API_KEY = ''
+MAX_RETRIES = 10
 
 def get_token():
-    capsolver.api_key = API_KEY
-    solution = capsolver.solve({
-        'type': 'FunCaptchaTaskProxyLess',
-        'websitePublicKey': '35536E1E-65B4-4D96-9D97-6ADB7EFF8147',
-        'websiteURL': 'https://chat.openai.com',
-    })
+    retry_count = 0
+    while retry_count < MAX_RETRIES:
+        try:
+            solution = capsolver.solve({
+                "type": "FunCaptchaTaskProxyLess",
+                "websitePublicKey": "35536E1E-65B4-4D96-9D97-6ADB7EFF8147",
+                "websiteURL": "https://chat.openai.com",
+            })
+            break
+        except capsolver.error.UnknownError as e:
+            retry_count += 1
+            print(f"Error occurred: {e}. Retrying...%d/%d" % (retry_count, MAX_RETRIES,))
+            time.sleep(5)
+    else:
+        print("Max retries reached. Please check the issue.")
+
     return solution
 
 
