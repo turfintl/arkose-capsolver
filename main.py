@@ -30,7 +30,7 @@ def get_token():
 class RequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed_path = urlparse(self.path)
-        if self.path != '/token':
+        if parsed_path.path != '/token':
             self.send_response(502)
             self.end_headers()
             return
