@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
-import json
+import json, time
 import capsolver
 
 # 填入CapSolver API key // Enter your CapSolver API key here
