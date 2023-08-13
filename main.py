@@ -5,7 +5,7 @@ import capsolver
 
 # 填入CapSolver API key // Enter your CapSolver API key here
 API_KEY = ''
-MAX_RETRIES = 10
+MAX_RETRIES = 50
 
 def get_token():
     retry_count = 0
@@ -17,7 +17,7 @@ def get_token():
                 "websiteURL": "https://chat.openai.com",
             })
             break
-        except capsolver.error.UnknownError as e:
+        except (capsolver.error.UnknownError, capsolver.error.Timeout) as e:
             retry_count += 1
             print(f"Error occurred: {e}. Retrying...%d/%d" % (retry_count, MAX_RETRIES,))
             time.sleep(5)
