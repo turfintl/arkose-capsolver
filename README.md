@@ -1,4 +1,5 @@
 # arkose-capsolver                                                                                                                            
+[>>>ENGLISH<<<](README.en.md)
 一个简单的利用CapSolver API获取arkose token的http服务器。  
 注：CapSolver收费，$2 / 1000 token
 
@@ -8,7 +9,7 @@
 pip3 install capsolver
 git clone https://github.com/turfintl/arkose-capsolver.git
 ```
-编辑main.py填入你的API key
+编辑`main.py`填入你的API key
 
 ## 运行
 ```
