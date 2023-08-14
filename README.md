@@ -3,7 +3,7 @@
 一个简单的利用CapSolver API获取arkose token的http服务器。  
 注：CapSolver收费，$2 / 1000 token  
 注2：本项目用于OpenAI ChatGPT提问时所需arkose token  
-注3：因CapSolver实际体验识别率有时并不高，等待时间可能会较长，不推荐用于token需求量的场景
+注3：因CapSolver实际体验识别率有时并不高，等待时间可能会较长，不推荐用于token需求量大的场景
 
 ## 安装
 
