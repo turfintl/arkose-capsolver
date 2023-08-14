@@ -9,6 +9,7 @@ MAX_RETRIES = 50
 
 def get_token():
     retry_count = 0
+    capsolver.api_key = API_KEY
     while retry_count < MAX_RETRIES:
         try:
             solution = capsolver.solve({
