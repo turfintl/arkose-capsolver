@@ -10,10 +10,11 @@ API_KEY = ''
 CAPSOLVER_MAX_RETRIES = 50
 PUBLIC_POOL_MAX_RETRIES = 50
 
-def get_token_from_capsolver(stop_event=threading.Event()):
+def get_token_from_capsolver(stop_event=threading.Event(), delay=0):
     retry_count = 0
     capsolver.api_key = API_KEY
     solution = {}
+    time.sleep(delay)
     while retry_count < CAPSOLVER_MAX_RETRIES and not stop_event.is_set():
         try:
             solution = capsolver.solve({
@@ -35,10 +36,11 @@ def get_token_from_capsolver(stop_event=threading.Event()):
     return solution
 
 
-def get_token_from_public_pool(url, stop_event=threading.Event()):
+def get_token_from_public_pool(url, stop_event=threading.Event(), delay=0):
     s = requests.Session()
     retry_count = -1
     token = {}
+    time.sleep(delay)
     while retry_count < PUBLIC_POOL_MAX_RETRIES and not stop_event.is_set():
         retry_count += 1
         try:
@@ -68,10 +70,15 @@ def get_first_result(stop_event):
     # Uncomment and assign a value to public_pool_urlx to enable the public token pool support
     # 注意保持value值和service_pool中元素一一对应
     # Ensure that the values correspond with the elements in service_pool
+    
+    # 根据需求指定延迟开始时间 // modify the delay of tasks as you wish
+    #public_pool_url1, delay1 = '', 0
+    #public_pool_url2, delay2 = '', 0
+    capsolver_delay = 0
     futures = {
-        executor.submit(get_token_from_capsolver, stop_event): "capsolver", 
-    #    executor.submit(get_token_from_public_pool, public_pool_url1, stop_event): "public_pool1", 
-    #    executor.submit(get_token_from_public_pool, public_pool_url2, stop_event): "public_pool2", 
+        executor.submit(get_token_from_capsolver, stop_event, capsolver_delay): "capsolver", 
+    #    executor.submit(get_token_from_public_pool, public_pool_url1, stop_event, delay1): "public_pool1", 
+    #    executor.submit(get_token_from_public_pool, public_pool_url2, stop_event, delay2): "public_pool2", 
     }
     service_pool = ('capsolver', 'public_pool1', 'public_pool2',)
 
