@@ -70,8 +70,8 @@ def get_first_result(stop_event):
     # Ensure that the values correspond with the elements in service_pool
     futures = {
         executor.submit(get_token_from_capsolver, stop_event): "capsolver", 
-    #    executor.submit(get_token_from_public_poll, public_pool_url1, stop_event): "public_pool1", 
-    #    executor.submit(get_token_from_public_pol2, public_pool_url2, stop_event): "public_pool2", 
+    #    executor.submit(get_token_from_public_pool, public_pool_url1, stop_event): "public_pool1", 
+    #    executor.submit(get_token_from_public_pool, public_pool_url2, stop_event): "public_pool2", 
     }
     service_pool = ('capsolver', 'public_pool1', 'public_pool2',)
 
