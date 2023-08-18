@@ -25,7 +25,7 @@ def get_token_from_capsolver(stop_event=threading.Event(), delay=0):
             break
         except (capsolver.error.UnknownError, capsolver.error.Timeout) as e:
             retry_count += 1
-            print(f"Error occurred: {e}. Retrying...%d/%d" % (retry_count, MAX_RETRIES,))
+            print(f"Error occurred: {e}. Retrying...%d/%d" % (retry_count, CAPSOLVER_MAX_RETRIES,))
             time.sleep(5)
     else:
         if retry_count == CAPSOLVER_MAX_RETRIES:
