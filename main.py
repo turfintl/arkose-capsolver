@@ -64,16 +64,16 @@ def get_token_from_public_pool(url, stop_event=threading.Event()):
 
 def get_first_result(stop_event):
     executor = concurrent.futures.ThreadPoolExecutor()
-	# 取消注释并赋值public_pool_urlx以启用公共token池
+    # 取消注释并赋值public_pool_urlx以启用公共token池
     # Uncomment and assign a value to public_pool_urlx to enable the public token pool support
-	# 注意保持value值和service_pool中元素一一对应
+    # 注意保持value值和service_pool中元素一一对应
     # Ensure that the values correspond with the elements in service_pool
     futures = {
         executor.submit(get_token_from_capsolver, stop_event): "capsolver", 
     #    executor.submit(get_token_from_public_poll, public_pool_url1, stop_event): "public_pool1", 
     #    executor.submit(get_token_from_public_pol2, public_pool_url2, stop_event): "public_pool2", 
     }
-	service_pool = ('capsolver', 'public_pool1', 'public_pool2',)
+    service_pool = ('capsolver', 'public_pool1', 'public_pool2',)
 
     for future in concurrent.futures.as_completed(futures):
         if futures[future] in service_pool:
